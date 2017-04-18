@@ -78,6 +78,7 @@ $(function() {
 
     /* Initial Entries test suite */
     describe('Initial Entries', function() {
+      /* Async loadFeed call */
       beforeEach(function(done) {
         loadFeed(0, function() {
           done();
@@ -94,9 +95,31 @@ $(function() {
 
     /* New Feed Selection test suite */
     describe('New Feed Selection', function() {
-      /* TODO: Write a test that ensures when a new feed is loaded
-       * by the loadFeed function that the content actually changes.
-       * Remember, loadFeed() is asynchronous.
+      var feedX;
+      var feedY;
+
+      /* Async loadFeed call */
+      beforeEach(function(done) {
+        loadFeed(1, function() {
+          feedX = $('.feed').html();
+          done();
+        });
+      });
+
+      /* Reset the feed */
+      afterEach(function() {
+        loadFeed(0);
+      });
+
+      /* Ensures when a new feed is loaded by the loadFeed function that the content
+       * actually changes in the DOM.
        */
+      it('has its content change upon being loaded', function() {
+        loadFeed(2, function() {
+          feedY = $('.feed').html();
+        });
+
+        expect(feedX).not.toEqual(feedY);
+      });
     });
 }());
