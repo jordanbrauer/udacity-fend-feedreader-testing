@@ -30,9 +30,9 @@ $(function() {
         /* Loops through each feed in the allFeeds object and ensure
          * it has a URL defined and that the URL is not empty.
          */
-        it('have a url property that is not undefined', function() {
+        it('have a url property that is not undefined and not empty', function() {
           allFeeds.forEach(function(feed) {
-            expect(feed.url).toBeDefined();
+            expect(feed.url).not.toBeUndefined();
             expect(feed.url.length).not.toBe(0);
           });
         });
@@ -41,9 +41,9 @@ $(function() {
         /* Loops through each feed in the allFeeds object and ensures
          * it has a name defined and that the name is not empty.
          */
-        it('have a name property that is not undefined', function() {
+        it('have a name property that is not undefined and not empty', function() {
           allFeeds.forEach(function(feed) {
-            expect(feed.name).toBeDefined();
+            expect(feed.name).not.toBeUndefined();
             expect(feed.name.length).not.toBe(0);
           });
         });
