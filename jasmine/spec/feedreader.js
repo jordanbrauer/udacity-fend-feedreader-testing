@@ -26,7 +26,6 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* Loops through each feed in the allFeeds object and ensure
          * it has a URL defined and that the URL is not empty.
          */
@@ -36,7 +35,6 @@ $(function() {
             expect(feed.url.length).not.toBe(0);
           });
         });
-
 
         /* Loops through each feed in the allFeeds object and ensures
          * it has a name defined and that the name is not empty.
@@ -80,16 +78,14 @@ $(function() {
     describe('Initial Entries', function() {
       /* Async loadFeed call */
       beforeEach(function(done) {
-        loadFeed(0, function() {
-          done();
-        });
+        loadFeed(0, done);
       });
 
       /* Ensures when the loadFeed function is called and completes its work, there is
        * at least a single .entry element within the .feed container.
        */
       it('have at least one .entry element within the .feed container', function() {
-        expect($('.feed').children().length).toBeGreaterThan(0);
+        expect($('.feed .entry').length).toBeGreaterThan(0);
       });
     });
 
