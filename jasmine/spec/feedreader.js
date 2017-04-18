@@ -55,34 +55,33 @@ $(function() {
       /* Ensures the menu element is hidden by default. */
       it('is hidden by default', function() {
         $(document).ready(function() {
-          var isHidden = $('body').hasClass('menu-hidden');
-
-          expect(isHidden).toBe(true);
+          expect($('body').hasClass('menu-hidden')).toBe(true);
         });
       });
 
-      /* TODO: Write a test that ensures the menu changes
-       * visibility when the menu icon is clicked. This test
-       * should have two expectations: does the menu display when
-       * clicked and does it hide when clicked again.
-       */
-      it('changes visibility when the menu icon is clicked', function() {
+      /* Ensures the menu changes visibility when the menu icon is clicked. */
+      it('toggles visibility when the menu icon is clicked', function() {
         var menuIcon = $('.menu-icon-link');
 
-        menuIcon.on('click', function() {
-          console.log('poop');
-        });
+        /* Does it show when clicked? */
+        menuIcon.click();
+        expect($('body').hasClass('menu-hidden')).toBe(false);
+
+        /* Does it hide when clicked again? */
+        menuIcon.click();
+        expect($('body').hasClass('menu-hidden')).toBe(true);
       });
     });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
-
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+    /* Initial Entries test suite */
+    describe('Initial Entries', function() {
+      /* TODO: Write a test that ensures when the loadFeed
+       * function is called and completes its work, there is at least
+       * a single .entry element within the .feed container.
+       * Remember, loadFeed() is asynchronous so this test will require
+       * the use of Jasmine's beforeEach and asynchronous done() function.
+       */
+    });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
