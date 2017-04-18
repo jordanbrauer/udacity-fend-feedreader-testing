@@ -27,32 +27,53 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
+        /* Loops through each feed in the allFeeds object and ensure
+         * it has a URL defined and that the URL is not empty.
          */
+        it('have a url property that is not undefined', function() {
+          allFeeds.forEach(function(feed) {
+            expect(feed.url).toBeDefined();
+            expect(feed.url.length).not.toBe(0);
+          });
+        });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
+        /* Loops through each feed in the allFeeds object and ensures
+         * it has a name defined and that the name is not empty.
          */
+        it('have a name property that is not undefined', function() {
+          allFeeds.forEach(function(feed) {
+            expect(feed.name).toBeDefined();
+            expect(feed.name.length).not.toBe(0);
+          });
+        });
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    /* The menu test suite */
+    describe('The menu', function() {
+      /* Ensures the menu element is hidden by default. */
+      it('is hidden by default', function() {
+        $(document).ready(function() {
+          var isHidden = $('body').hasClass('menu-hidden');
 
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
+          expect(isHidden).toBe(true);
+        });
+      });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+      /* TODO: Write a test that ensures the menu changes
+       * visibility when the menu icon is clicked. This test
+       * should have two expectations: does the menu display when
+       * clicked and does it hide when clicked again.
+       */
+      it('changes visibility when the menu icon is clicked', function() {
+        var menuIcon = $('.menu-icon-link');
+
+        menuIcon.on('click', function() {
+          console.log('poop');
+        });
+      });
+    });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
