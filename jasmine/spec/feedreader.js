@@ -110,12 +110,12 @@ $(function() {
       /* Ensures when a new feed is loaded by the loadFeed function that the content
        * actually changes in the DOM.
        */
-      it('has its content change upon being loaded', function() {
+      it('has its content change upon being loaded', function(done) {
         loadFeed(2, function() {
           feedY = $('.feed').html();
+          expect(feedX).not.toEqual(feedY);
+          done();
         });
-
-        expect(feedX).not.toEqual(feedY);
       });
     });
 }());
